@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tanvir Hasan Ratul | CSE Student & Front-end Learner</title>
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
+      background-color: #f8fafc;  /* light gray background */
+      color: #0a1929;             /* navy-inspired dark text */
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container for consistent width & centering */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* section spacing */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+
+    /* section title */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0a2540;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #1e3a8a; /* navy accent */
+      border-radius: 4px;
+    }
+
+    /* buttons & links */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background-color: #0f2b6d;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ---------- HEADER / NAV (simple sticky) ---------- */
+    header {
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(2px);
+      background: rgba(255,255,255,0.96);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, #0f2b6d, #1e40af);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #1e3a8a;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: #e6f0ff;
+      color: #1e3a8a;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+    .hero-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 20px;
+      border-left: 4px solid #1e3a8a;
+      padding-left: 18px;
+    }
+    .hero-short-intro {
+      font-size: 1.1rem;
+      color: #475569;
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+    .contact-info-hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 28px;
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+    .contact-info-hero span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-image {
+      flex: 0.6;
+      text-align: center;
+      margin-top: 34px;
+    }
+    .hero-image .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: inline-block;
+      border: 6px solid #ffffff;
+      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.1);
+    }
+
+    /* about me */
+    .about-text {
+      font-size: 1.1rem;
+      max-width: 800px;
+      background: white;
+      padding: 28px 32px;
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      border: 1px solid #eef2ff;
+      line-height: 1.6;
+      color: #1e293b;
+    }
+
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+      border: 1px solid #eef2ff;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+      border-color: #cddcff;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #0f2b6d;
+    }
+    .card-meta {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .card-detail {
+      color: #334155;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    /* Skills badges */
+    .skills-badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .skill-badge {
+      background: #eef2ff;
+      color: #1e3a8a;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+    .skill-badge:hover {
+      background: #1e3a8a;
+      color: white;
+      transform: scale(1.02);
+    }
+
+    /* Achievements & Activities cards extra */
+    .list-achievement {
+      list-style: none;
+      padding-left: 0;
+    }
+    .list-achievement li {
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .list-achievement li::before {
+      content: "🏅";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Contact section */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: white;
+      border-radius: 32px;
+      padding: 32px 36px;
+      border: 1px solid #eef2ff;
+    }
+    .contact-info-details {
+      flex: 1;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      font-size: 1rem;
+      color: #0f172a;
+    }
+    .contact-icon {
+      background: #eef2ff;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    hr {
+      margin: 20px 0;
+      border-color: #eef2ff;
+    }
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      background: white;
+      border-top: 1px solid #eef2ff;
+      color: #475569;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container, .nav-container {
+        padding: 0 18px;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-title {
+        border-left: none;
+        text-align: center;
+        padding-left: 0;
+      }
+      .hero-short-intro {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .contact-info-hero {
+        justify-content: center;
+      }
+      .section-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .section-title {
+        text-align: center;
+        width: 100%;
+      }
+      .nav-links {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+      .contact-flex {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .btn {
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">Tanvir.dev</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#activities">Activities</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">✨ Open to work & internship</div>
+        <h1>Tanvir Hasan Ratul</h1>
+        <div class="hero-title">CSE Student | Front-end Learner | Tech Enthusiast</div>
+        <p class="hero-short-intro">Motivated CSE undergraduate eager to bring creative web solutions, learn fast, and build impactful digital experiences.</p>
+        <a href="#contact" class="btn">📬 Contact Me</a>
+        <div class="contact-info-hero">
+          <span>📞 +8801639414195</span>
+          <span>✉️ ratult258@gmail.com</span>
+          <span>📍 Kawla, Uttara, Dhaka-1229</span>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img
+          src="profile-photo.jpg"
+          alt="Tanvir Hasan Ratul"
+          class="profile-photo"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-text">
+        I am Tanvir Hasan Ratul, a responsible and motivated Computer Science & Engineering student at Northern University Bangladesh. I am looking forward to gaining my first professional work experience and improving my skills in technology, web development, and communication. I bring a proactive mindset, a passion for building modern web interfaces, and a strong desire to learn from real-world projects.
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section (cards) -->
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="cards-grid">
+        <!-- University Card -->
+        <div class="card">
+          <h3>🎓 Northern University Bangladesh</h3>
+          <div class="card-meta">Department: Computer Science & Engineering | 2022–2027</div>
+          <div class="card-detail">Student ID: 41230301477 <br> Ongoing B.Sc. in CSE, focusing on programming, DSA, web technologies.</div>
+        </div>
+        <!-- HSC Card -->
+        <div class="card">
+          <h3>📘 Haji Asmot Govt. College</h3>
+          <div class="card-meta">HSC, Science | Year: 2022 | GPA: 3.33</div>
+          <div class="card-detail">Completed Higher Secondary Certificate in Science group with focus on Physics, Chemistry & Mathematics.</div>
+        </div>
+        <!-- SSC Card -->
+        <div class="card">
+          <h3>🏫 Arjot Atorjan High School</h3>
+          <div class="card-meta">SSC, Science | Year: 2020 | GPA: 3.61</div>
+          <div class="card-detail">Secondary School Certificate (Science) built strong foundation in analytical thinking.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section with badges -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-badge-container">
+        <span class="skill-badge">Bangla</span>
+        <span class="skill-badge">English</span>
+        <span class="skill-badge">Hindi</span>
+        <span class="skill-badge">Basic Computer</span>
+        <span class="skill-badge">HTML5</span>
+        <span class="skill-badge">CSS3</span>
+        <span class="skill-badge">C Programming</span>
+        <span class="skill-badge">C++</span>
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">MS Word</span>
+        <span class="skill-badge">Excel</span>
+        <span class="skill-badge">PowerPoint</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section (Cards style) -->
+  <section id="achievements">
+    <div class="container">
+      <h2 class="section-title">Achievements</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>🏆 Innovation Design & Project Showcasing</h3>
+          <div class="card-meta">ICT Division, Bangladesh</div>
+          <div class="card-detail">Recognized for creative project presentation and innovative prototype design.</div>
+        </div>
+        <div class="card">
+          <h3>⚛️ Front-end Development with React Workshop</h3>
+          <div class="card-meta">Hands-on Workshop Certification</div>
+          <div class="card-detail">Completed intensive workshop on modern React concepts and component-based architecture.</div>
+        </div>
+        <div class="card">
+          <h3>📞 Genex Customer Service Officer, GP Process</h3>
+          <div class="card-meta">DM-93 Batch | ID: 27007</div>
+          <div class="card-detail">Duration: 01/01/2025 – 01/03/2025 <br /> Professional experience in customer service & telco process management.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities Section (cards style) -->
+  <section id="activities">
+    <div class="container">
+      <h2 class="section-title">Extracurricular Activities</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>🤝 Joint Secretary at NUB Computer Club</h3>
+          <div class="card-detail">Leading club operations, organizing workshops, coding competitions, and community events to boost technical culture.</div>
+        </div>
+        <div class="card">
+          <h3>📢 Class Representative (CR)</h3>
+          <div class="card-detail">Acted as bridge between faculty and students, managed academic coordination and peer mentorship.</div>
+        </div>
+        <div class="card">
+          <h3>🌍 Campus Ambassador at TECHDATA SQUARES</h3>
+          <div class="card-detail">Represented the brand in university, promoting tech events and building partnerships.</div>
+        </div>
+        <div class="card">
+          <h3>🏅 Campus Ambassador at ICT Olympiad Bangladesh</h3>
+          <div class="card-detail">Promoted ICT olympiad amongst students, coordinated event participation and awareness campaigns.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section (detailed) -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-flex">
+        <div class="contact-info-details">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div><strong>Phone:</strong> +8801639414195</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div><strong>Email:</strong> ratult258@gmail.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div><strong>Address:</strong> Kawla, Uttara, Dhaka-1229, Bangladesh</div>
+          </div>
+          <hr />
+          <p style="margin-top: 12px; color:#334155;">Open for collaborations, internships, or just a tech chat. Feel free to reach out!</p>
+        </div>
+        <div style="flex: 1; background:#F8FAFE; border-radius: 24px; padding: 20px; text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">📬</div>
+          <p style="font-weight: 500;">Let’s connect and build something meaningful.</p>
+          <a href="mailto:ratult258@gmail.com" class="btn" style="margin-top: 18px; background: #1e3a8a;">Send an Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Tanvir Hasan Ratul — Student Portfolio. Designed with 💙 from Dhaka, Bangladesh.</p>
+  </div>
+</footer>
+</body>
+</html>
